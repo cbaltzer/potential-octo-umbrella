@@ -1,5 +1,22 @@
 # APMC
 
+## Part 1 
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+
+pip install -r requirements.txt
+python medialive.py 
+```
+
+The [part1/](part1/) directory contains a very simple Python script to create a bare-bones MediaLive input. 
+This input has no sources, and a placeholder destination. The input creation also requires an input security group, 
+so a placeholder is created for that as well. Both are tagged with `test:apmc` for easy cleanup. 
+
+This assumes you have the AWS CLI configured with proper access. 
+
+
 
 ## Part 2 
 
@@ -39,6 +56,8 @@ Note: While we are leaving the audio unchanged, the video does need to be re-enc
 
 ## Part 3
 
+There's a PNG version of this in [part3/](part3/)
+
 ```mermaid
 flowchart LR
     Inputs --> Encoder{Encoder}
@@ -58,4 +77,8 @@ flowchart LR
     CDN --> F[fa:fa-laptop User 3]
 ```
 
+Some notes: 
+- Inputs and encoder here are dependent on a particular setup, this could be a webcam and OBS or a professional setup with a hardware encoder
+- Transcoder and packager may be rolled into one service 
+- A multi-CDN setup is not substantially different, just an expansion of this flow
 
